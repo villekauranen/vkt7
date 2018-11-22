@@ -39,3 +39,11 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+//Set up mongoose connection
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb://<seppo>:<salaperainen209>@ds163842.mlab.com:63842/paikallinen_kikkare';
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
